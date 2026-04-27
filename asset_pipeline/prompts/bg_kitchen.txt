@@ -1,0 +1,9 @@
+Use case: stylized-concept
+Asset type: game asset for family educational visual novel
+Primary request: module 4 cooking scene
+Style/medium: bright rustic family kitchen
+Composition/framing: oven, table, bowl, milk, eggs, flour, spoon
+Constraints: family-friendly, child-safe, no aggression, no horror, no watermark, production-ready game asset
+Avoid: dark horror mood, cluttered composition, extra text, photorealism unless implied
+
+bright rustic kitchen with oven, wooden table, bowl, eggs, milk, flour, wooden spoon, embroidered towels, warm golden light, family-friendly visual novel background, 16:9

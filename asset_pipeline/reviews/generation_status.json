@@ -1,0 +1,122 @@
+[
+  {
+    "id": "char_pampalche_base",
+    "category": "character",
+    "status": "pending_generation",
+    "output_path": "G:\\Project all\\Novela-bl9t\\asset_pipeline\\output\\characters\\char_pampalche_base.png"
+  },
+  {
+    "id": "char_pampalche_expressions",
+    "category": "character_sheet",
+    "status": "pending_generation",
+    "output_path": "G:\\Project all\\Novela-bl9t\\asset_pipeline\\output\\characters\\char_pampalche_expressions.png"
+  },
+  {
+    "id": "char_family_set",
+    "category": "character",
+    "status": "pending_generation",
+    "output_path": "G:\\Project all\\Novela-bl9t\\asset_pipeline\\output\\characters\\char_family_set.png"
+  },
+  {
+    "id": "char_helper_mascots",
+    "category": "character",
+    "status": "pending_generation",
+    "output_path": "G:\\Project all\\Novela-bl9t\\asset_pipeline\\output\\characters\\char_helper_mascots.png"
+  },
+  {
+    "id": "bg_main_menu",
+    "category": "background",
+    "status": "pending_generation",
+    "output_path": "G:\\Project all\\Novela-bl9t\\asset_pipeline\\output\\backgrounds\\bg_main_menu.png"
+  },
+  {
+    "id": "bg_intro_clearing",
+    "category": "background",
+    "status": "pending_generation",
+    "output_path": "G:\\Project all\\Novela-bl9t\\asset_pipeline\\output\\backgrounds\\bg_intro_clearing.png"
+  },
+  {
+    "id": "bg_literary_screen",
+    "category": "background",
+    "status": "pending_generation",
+    "output_path": "G:\\Project all\\Novela-bl9t\\asset_pipeline\\output\\backgrounds\\bg_literary_screen.png"
+  },
+  {
+    "id": "bg_home_talk",
+    "category": "background",
+    "status": "pending_generation",
+    "output_path": "G:\\Project all\\Novela-bl9t\\asset_pipeline\\output\\backgrounds\\bg_home_talk.png"
+  },
+  {
+    "id": "bg_workshop_amulet",
+    "category": "background",
+    "status": "pending_generation",
+    "output_path": "G:\\Project all\\Novela-bl9t\\asset_pipeline\\output\\backgrounds\\bg_workshop_amulet.png"
+  },
+  {
+    "id": "bg_crossword_ui",
+    "category": "background",
+    "status": "pending_generation",
+    "output_path": "G:\\Project all\\Novela-bl9t\\asset_pipeline\\output\\backgrounds\\bg_crossword_ui.png"
+  },
+  {
+    "id": "bg_kitchen",
+    "category": "background",
+    "status": "pending_generation",
+    "output_path": "G:\\Project all\\Novela-bl9t\\asset_pipeline\\output\\backgrounds\\bg_kitchen.png"
+  },
+  {
+    "id": "bg_final_feast",
+    "category": "background",
+    "status": "pending_generation",
+    "output_path": "G:\\Project all\\Novela-bl9t\\asset_pipeline\\output\\backgrounds\\bg_final_feast.png"
+  },
+  {
+    "id": "prop_amulet_ring",
+    "category": "prop",
+    "status": "pending_generation",
+    "output_path": "G:\\Project all\\Novela-bl9t\\asset_pipeline\\output\\props\\prop_amulet_ring.png"
+  },
+  {
+    "id": "prop_crossword_cells",
+    "category": "prop",
+    "status": "pending_generation",
+    "output_path": "G:\\Project all\\Novela-bl9t\\asset_pipeline\\output\\props\\prop_crossword_cells.png"
+  },
+  {
+    "id": "prop_kitchen_set",
+    "category": "prop",
+    "status": "pending_generation",
+    "output_path": "G:\\Project all\\Novela-bl9t\\asset_pipeline\\output\\props\\prop_kitchen_set.png"
+  },
+  {
+    "id": "ui_button_set",
+    "category": "ui",
+    "status": "pending_generation",
+    "output_path": "G:\\Project all\\Novela-bl9t\\asset_pipeline\\output\\ui\\ui_button_set.png"
+  },
+  {
+    "id": "ui_dialog_frame",
+    "category": "ui",
+    "status": "pending_generation",
+    "output_path": "G:\\Project all\\Novela-bl9t\\asset_pipeline\\output\\ui\\ui_dialog_frame.png"
+  },
+  {
+    "id": "ui_icon_set",
+    "category": "ui",
+    "status": "pending_generation",
+    "output_path": "G:\\Project all\\Novela-bl9t\\asset_pipeline\\output\\ui\\ui_icon_set.png"
+  },
+  {
+    "id": "reward_set",
+    "category": "reward",
+    "status": "pending_generation",
+    "output_path": "G:\\Project all\\Novela-bl9t\\asset_pipeline\\output\\rewards\\reward_set.png"
+  },
+  {
+    "id": "ui_certificate_template",
+    "category": "reward",
+    "status": "pending_generation",
+    "output_path": "G:\\Project all\\Novela-bl9t\\asset_pipeline\\output\\rewards\\ui_certificate_template.png"
+  }
+]

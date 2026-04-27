@@ -1,0 +1,52 @@
+:root {
+  --color-base-1: #f7f1e3;
+  --color-base-2: #e8d8bc;
+  --color-base-3: #d6b98b;
+  --color-base-4: #8a5a3c;
+  --color-nature-1: #a8b88a;
+  --color-nature-2: #718c5a;
+  --color-nature-3: #c7d9b7;
+  --color-accent-1: #b6453a;
+  --color-accent-2: #c86d4a;
+  --color-accent-3: #8d3d3a;
+  --color-magic-1: #dde4f2;
+  --color-magic-2: #b8c7d9;
+  --color-magic-3: #f2e8c9;
+  --color-text: #533629;
+  --shadow-soft: 0 18px 44px rgba(90, 58, 41, 0.08);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  font-family: "Segoe UI", "Trebuchet MS", sans-serif;
+  color: var(--color-text);
+  background: var(--color-base-1);
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+img {
+  max-width: 100%;
+}

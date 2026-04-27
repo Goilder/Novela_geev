@@ -1,0 +1,9 @@
+Use case: stylized-concept
+Asset type: game asset for family educational visual novel
+Primary request: module 3 puzzle UI elements
+Style/medium: soft educational UI asset
+Composition/framing: grid cells, glow states, highlight tiles
+Constraints: family-friendly, child-safe, no aggression, no horror, no watermark, production-ready game asset
+Avoid: dark horror mood, cluttered composition, extra text, photorealism unless implied
+
+set of glowing crossword cells and decorative puzzle tiles for a cozy folk educational game, clean readable shape language, warm linen and sage palette, transparent background

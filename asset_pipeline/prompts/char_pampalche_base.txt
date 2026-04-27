@@ -1,0 +1,9 @@
+Use case: stylized-concept
+Asset type: game asset for family educational visual novel
+Primary request: main guide character for scenes and navigation
+Style/medium: cozy VN, Mari-inspired, family-safe
+Composition/framing: full body front-facing readable silhouette
+Constraints: family-friendly, child-safe, no aggression, no horror, no watermark, production-ready game asset
+Avoid: dark horror mood, cluttered composition, extra text, photorealism unless implied
+
+kind brave caring fairy-tale heroine, japanese visual novel character design, Mari-inspired folk costume, linen blouse, terracotta dress layer, geometric red embroidery, woven belt, small silver ornaments, subtle silver glow in smile, chestnut braided hair, warm expressive eyes, family-friendly educational game, cozy lighting, clean silhouette, full body, transparent background

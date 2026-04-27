@@ -1,0 +1,9 @@
+Use case: stylized-concept
+Asset type: game asset for family educational visual novel
+Primary request: module 2 interactive craft object
+Style/medium: storybook prop illustration
+Composition/framing: isolated folk amulet ring with ribbons
+Constraints: family-friendly, child-safe, no aggression, no horror, no watermark, production-ready game asset
+Avoid: dark horror mood, cluttered composition, extra text, photorealism unless implied
+
+folk protective family amulet ring made of cardboard and ribbons, simple geometric patterns, warm handmade children’s craft style, isolated object, transparent background

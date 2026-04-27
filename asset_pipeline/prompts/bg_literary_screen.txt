@@ -1,0 +1,9 @@
+Use case: stylized-concept
+Asset type: game asset for family educational visual novel
+Primary request: module 1 story and discussion scene
+Style/medium: magical story glade
+Composition/framing: silver luminous screen with free lower UI zone
+Constraints: family-friendly, child-safe, no aggression, no horror, no watermark, production-ready game asset
+Avoid: dark horror mood, cluttered composition, extra text, photorealism unless implied
+
+forest glade with a silver luminous story screen, magical family-safe atmosphere, warm light, subtle floating particles, Mari-inspired fairy-tale visual novel background, space for character sprites and dialogue box, 16:9

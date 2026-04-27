@@ -1,0 +1,9 @@
+Use case: stylized-concept
+Asset type: game asset for family educational visual novel
+Primary request: badges and four story sparks
+Style/medium: friendly celebratory folk fantasy
+Composition/framing: centered emblems
+Constraints: family-friendly, child-safe, no aggression, no horror, no watermark, production-ready game asset
+Avoid: dark horror mood, cluttered composition, extra text, photorealism unless implied
+
+reward badges and glowing spark emblems for a family educational fairy-tale game, warm gold, red ribbons, silver glow, folk decorative accents, child-friendly celebratory style, transparent background

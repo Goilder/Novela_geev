@@ -1,16 +1,48 @@
 import { Routes } from '@angular/router';
-
+import { finalAccessGuard, moduleAccessGuard, transitionAccessGuard } from './core/guards/module-access.guard';
+import { AwardsPageComponent } from './pages/awards-page.component';
 import { FinalPageComponent } from './pages/final-page.component';
 import { HomePageComponent } from './pages/home-page.component';
-import { ModuleMapPageComponent } from './pages/module-map-page.component';
+import { MapPageComponent } from './pages/map-page.component';
 import { ModulePageComponent } from './pages/module-page.component';
-import { RewardsPageComponent } from './pages/rewards-page.component';
+import { TransitionPageComponent } from './pages/transition-page.component';
 
 export const routes: Routes = [
-  { path: '', component: HomePageComponent },
-  { path: 'map', component: ModuleMapPageComponent },
-  { path: 'modules/:moduleId', component: ModulePageComponent },
-  { path: 'rewards', component: RewardsPageComponent },
-  { path: 'final', component: FinalPageComponent },
-  { path: '**', redirectTo: '' }
+  {
+    path: '',
+    component: HomePageComponent,
+    title: 'Пампалче | Главное меню',
+  },
+  {
+    path: 'map',
+    component: MapPageComponent,
+    title: 'Пампалче | Карта модулей',
+  },
+  {
+    path: 'module/:moduleId',
+    component: ModulePageComponent,
+    canActivate: [moduleAccessGuard],
+    title: 'Пампалче | Модуль',
+  },
+  {
+    path: 'transition/:moduleId',
+    component: TransitionPageComponent,
+    canActivate: [transitionAccessGuard],
+    title: 'Пампалче | Следующий шаг',
+  },
+  {
+    path: 'awards',
+    component: AwardsPageComponent,
+    title: 'Пампалче | Награды',
+  },
+  {
+    path: 'final',
+    component: FinalPageComponent,
+    canActivate: [finalAccessGuard],
+    title: 'Пампалче | Финал',
+  },
+  {
+    path: '**',
+    redirectTo: '',
+  },
 ];

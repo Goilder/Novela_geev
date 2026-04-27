@@ -1,13 +1,15 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
+  "cli": {
+    "packageManager": "npm"
+  },
   "newProjectRoot": "projects",
   "projects": {
-    "pampalche-novela": {
+    "novela": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "standalone": true,
           "style": "scss"
         }
       },
@@ -16,14 +18,9 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular/build:application",
           "options": {
-            "outputPath": "dist/pampalche-novela",
-            "index": "src/index.html",
             "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -32,19 +29,17 @@
                 "input": "public"
               },
               {
-                "glob": "pampalche_game_content.json",
-                "input": ".",
-                "output": "/content"
+                "glob": "**/*",
+                "input": "assets",
+                "output": "assets"
               },
               {
-                "glob": "pampalche_asset_manifest.json",
-                "input": "docs",
-                "output": "/content"
+                "glob": "pampalche_game_content.json",
+                "input": ".",
+                "output": "/"
               }
             ],
-            "styles": [
-              "src/styles.scss"
-            ]
+            "styles": ["src/styles.scss"]
           },
           "configurations": {
             "production": {
@@ -53,6 +48,11 @@
                   "type": "initial",
                   "maximumWarning": "500kB",
                   "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
                 }
               ],
               "outputHashing": "all"
@@ -66,16 +66,19 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "pampalche-novela:build:production"
+              "buildTarget": "novela:build:production"
             },
             "development": {
-              "buildTarget": "pampalche-novela:build:development"
+              "buildTarget": "novela:build:development"
             }
           },
           "defaultConfiguration": "development"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test"
         }
       }
     }

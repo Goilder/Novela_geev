@@ -1,9 +1,0 @@
-Use case: stylized-concept
-Asset type: game asset for family educational visual novel
-Primary request: module 4 ingredient and utensil assets
-Style/medium: friendly kitchen prop illustration
-Composition/framing: bowl, wooden spoon, milk, eggs, flour, pancake stack
-Constraints: family-friendly, child-safe, no aggression, no horror, no watermark, production-ready game asset
-Avoid: dark horror mood, cluttered composition, extra text, photorealism unless implied
-
-cozy rustic kitchen prop set for a family cooking game, bowl, wooden spoon, milk bottle, eggs, flour bag, pancake stack, warm soft illustration, transparent background

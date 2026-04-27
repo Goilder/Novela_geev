@@ -1,9 +1,0 @@
-Use case: stylized-concept
-Asset type: game asset for family educational visual novel
-Primary request: co-play family scenes
-Style/medium: soft semi-anime, cozy family game
-Composition/framing: mother father two children, full body sprites
-Constraints: family-friendly, child-safe, no aggression, no horror, no watermark, production-ready game asset
-Avoid: dark horror mood, cluttered composition, extra text, photorealism unless implied
-
-friendly family character set for a cozy educational visual novel, mother father two children, warm expressions, soft semi-anime style, subtle Mari folk textile details in clothing, safe and approachable design, full body sprites, transparent background

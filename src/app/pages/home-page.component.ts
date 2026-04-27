@@ -1,135 +1,119 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, inject } from '@angular/core';
-import { Router } from '@angular/router';
-
-import { FIGMA_ASSETS } from '../figma-assets';
-import { ContentService } from '../services/content.service';
-import { ProgressService } from '../services/progress.service';
+import { Component, computed, inject, signal } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
+import { ContentService } from '../core/services/content.service';
+import { ProgressService } from '../core/services/progress.service';
 
 @Component({
-  standalone: true,
   selector: 'app-home-page',
-  imports: [CommonModule],
+  standalone: true,
+  imports: [CommonModule, FormsModule, RouterLink],
   template: `
-    <section class="hero" *ngIf="content.content() as game" [style.background-image]="'url(' + assets.homeHero + ')'">
-      <div class="hero__overlay">
-        <div class="hero__story">
-          <h1>{{ game.project.title }}</h1>
-          <div class="hero__region">Республика Марий Эл</div>
-          <p class="lead">
-            Сказка повествует о смелой девочке по имени Сереброзубая Пампалче.
-            Её жизнь захватывающая и интересная. Сегодня вы с ней познакомитесь через образовательную игру.
-          </p>
+    @if (content(); as gameContent) {
+      <main class="page-shell page-shell--home">
+        <section class="hero-panel story-card hero-panel--home">
+          <div class="hero-panel__copy">
+            <p class="eyebrow">Главное меню</p>
+            <h1>{{ gameContent.meta.title }}</h1>
+            <p class="lede">{{ gameContent.meta.subtitle }}</p>
+            <p>{{ gameContent.meta.description }}</p>
 
-          <div class="hero__actions">
-            <button class="primary-btn" type="button" (click)="startJourney()">Начать игру</button>
-            <button class="secondary-btn" type="button" (click)="continueJourney()">
-              {{ game.ui_texts.buttons.continue }}
-            </button>
+            <div class="highlight-grid">
+              @for (highlight of gameContent.meta.highlights; track highlight) {
+                <div class="highlight-chip">{{ highlight }}</div>
+              }
+            </div>
           </div>
-        </div>
-      </div>
-    </section>
+
+          <div class="hero-panel__media">
+            <img [src]="gameContent.meta.homeBackgroundAsset" [alt]="gameContent.meta.title" />
+          </div>
+        </section>
+
+        <section class="content-grid content-grid--home">
+          <article class="story-card form-card story-card--soft">
+            <p class="eyebrow">Семейный старт</p>
+            <h2>Кто проходит путешествие</h2>
+            <div class="field-stack">
+              <label class="form-field">
+                <span>Имя ребенка</span>
+                <input
+                  type="text"
+                  placeholder="Например: Алина"
+                  [ngModel]="childName()"
+                  (ngModelChange)="childName.set($event)"
+                />
+              </label>
+
+              <label class="form-field">
+                <span>Имя родителя</span>
+                <input
+                  type="text"
+                  placeholder="Например: Мама Лена"
+                  [ngModel]="parentName()"
+                  (ngModelChange)="parentName.set($event)"
+                />
+              </label>
+            </div>
+
+            <div class="button-row">
+              <button class="btn btn--primary" type="button" (click)="startJourney()">
+                {{ hasStarted() ? 'Продолжить путешествие' : 'Начать путешествие' }}
+              </button>
+              <a class="btn btn--ghost" routerLink="/map">Открыть карту</a>
+            </div>
+          </article>
+
+          <article class="story-card story-card--soft">
+            <p class="eyebrow">Прогресс</p>
+            <h2>Что уже открыто</h2>
+            <div class="stat-grid">
+              <div class="stat-tile">
+                <strong>{{ progressService.state().completedModuleIds.length }}/4</strong>
+                <span>модуля завершено</span>
+              </div>
+              <div class="stat-tile">
+                <strong>{{ progressService.state().sparks }}</strong>
+                <span>искр собрано</span>
+              </div>
+              <div class="stat-tile">
+                <strong>{{ progressService.state().badges.length }}</strong>
+                <span>бейджа получено</span>
+              </div>
+            </div>
+
+            <div class="button-row">
+              <a class="btn btn--ghost" routerLink="/awards">Смотреть награды</a>
+              <button class="btn btn--ghost" type="button" (click)="resetJourney()">Сбросить прогресс</button>
+            </div>
+          </article>
+        </section>
+      </main>
+    }
   `,
-  styles: [`
-    .hero {
-      min-height: calc(100dvh - 80px);
-      background-position: center;
-      background-size: cover;
-      position: relative;
-      display: flex;
-      align-items: stretch;
-    }
-
-    .hero__overlay {
-      width: 100%;
-      background: linear-gradient(90deg, rgba(110, 122, 95, 0.74) 0%, rgba(125, 135, 111, 0.5) 42%, rgba(0, 0, 0, 0) 60%);
-      display: flex;
-      align-items: center;
-    }
-
-    .hero__story {
-      width: min(48rem, 100%);
-      padding: 5rem 2rem 4rem 6rem;
-      color: #fff;
-    }
-
-    h1 {
-      font-size: clamp(3rem, 7vw, 6rem);
-      line-height: 0.98;
-      margin: 0 0 1.25rem;
-      letter-spacing: -0.03em;
-    }
-
-    .hero__region {
-      font-size: clamp(1.3rem, 2.4vw, 2.2rem);
-      margin-bottom: 1.75rem;
-    }
-
-    .lead {
-      font-size: clamp(1.05rem, 1.8vw, 1.45rem);
-      line-height: 1.45;
-      max-width: 36rem;
-    }
-
-    .hero__actions {
-      display: flex;
-      gap: 0.9rem;
-      flex-wrap: wrap;
-      margin-top: 2rem;
-    }
-
-    .primary-btn,
-    .secondary-btn {
-      min-height: 3.25rem;
-      padding: 0.9rem 1.4rem;
-      border-radius: 1rem;
-      font: inherit;
-      font-weight: 700;
-      cursor: pointer;
-      border: none;
-      font-size: 1.15rem;
-    }
-
-    .primary-btn {
-      background: #c93232;
-      color: #fffaf6;
-    }
-
-    .secondary-btn {
-      background: rgba(255, 255, 255, 0.2);
-      color: #fffdf8;
-      border: 1px solid rgba(255, 255, 255, 0.28);
-      backdrop-filter: blur(10px);
-    }
-
-    @media (max-width: 900px) {
-      .hero__overlay {
-        background: linear-gradient(180deg, rgba(110, 122, 95, 0.78) 0%, rgba(110, 122, 95, 0.62) 45%, rgba(110, 122, 95, 0.2) 100%);
-      }
-
-      .hero__story {
-        padding: 2rem 1rem 2rem;
-      }
-    }
-  `]
 })
 export class HomePageComponent {
-  readonly assets = FIGMA_ASSETS;
-  readonly content = inject(ContentService);
-  readonly progress = inject(ProgressService);
+  private readonly contentService = inject(ContentService);
   private readonly router = inject(Router);
 
-  readonly nextRoute = computed(() => {
-    const active = this.progress.progress().activeModuleId;
-    return active ? ['/modules', active] : ['/map'];
-  });
+  protected readonly progressService = inject(ProgressService);
+  protected readonly content = this.contentService.content;
+
+  protected readonly childName = signal(this.progressService.state().familyProfile.childName);
+  protected readonly parentName = signal(this.progressService.state().familyProfile.parentName);
+  protected readonly hasStarted = computed(() => !!this.progressService.state().startedAt);
 
   startJourney(): void {
-    this.router.navigateByUrl('/map');
+    this.progressService.saveFamilyProfile(this.childName(), this.parentName());
+    void this.router.navigate(['/map']);
   }
 
-  continueJourney(): void {
-    void this.router.navigate(this.nextRoute());
+  resetJourney(): void {
+    if (window.confirm('Сбросить локальный прогресс путешествия?')) {
+      this.progressService.reset();
+      this.childName.set('');
+      this.parentName.set('');
+    }
   }
 }

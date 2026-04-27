@@ -1,9 +1,0 @@
-Use case: stylized-concept
-Asset type: game asset for family educational visual novel
-Primary request: dialogue emotion variants
-Style/medium: visual novel sprite sheet
-Composition/framing: consistent head and torso expression set
-Constraints: family-friendly, child-safe, no aggression, no horror, no watermark, production-ready game asset
-Avoid: dark horror mood, cluttered composition, extra text, photorealism unless implied
-
-expression sheet of a warm fairy-tale guide heroine, japanese visual novel sprite sheet, Mari-inspired costume, neutral, happy, surprised, thoughtful, caring, encouraging, proud, festive joyful, consistent hairstyle and clothing, transparent background, polished game asset

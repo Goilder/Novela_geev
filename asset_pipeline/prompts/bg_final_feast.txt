@@ -1,9 +1,0 @@
-Use case: stylized-concept
-Asset type: game asset for family educational visual novel
-Primary request: final celebration scene
-Style/medium: cozy festive visual novel background
-Composition/framing: family table, pancakes, four glowing sparks, shared celebration
-Constraints: family-friendly, child-safe, no aggression, no horror, no watermark, production-ready game asset
-Avoid: dark horror mood, cluttered composition, extra text, photorealism unless implied
-
-festive family table in a fairy-tale home, pancakes, warm lights, four glowing sparks of family warmth, Pampalche and family together, cozy celebratory visual novel background, 16:9

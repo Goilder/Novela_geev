@@ -1,0 +1,35 @@
+@if (loading()) {
+  <main class="loading-screen">
+    <div class="loading-screen__card story-card">
+      <p class="eyebrow">Пампалче уже рядом</p>
+      <h1>Загружаем семейное путешествие</h1>
+      <p>Подготавливаем сказку, задания, награды и карту модулей.</p>
+    </div>
+  </main>
+} @else {
+  <div class="app-shell">
+    <header class="app-topbar">
+      <div class="app-topbar__inner">
+        <a class="brand-mark" routerLink="/">
+          <span class="brand-mark__title">Пока все вместе</span>
+          <span class="brand-mark__subtitle">Путешествие с Пампалче</span>
+        </a>
+
+        <nav class="app-topbar__nav">
+          <a routerLink="/" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }">
+            Меню
+          </a>
+          <a routerLink="/map" routerLinkActive="is-active">Карта</a>
+          <a routerLink="/awards" routerLinkActive="is-active">Награды</a>
+        </nav>
+
+        <div class="spark-pill">
+          <span class="spark-pill__icon">✦</span>
+          <span>{{ sparks() }} искр</span>
+        </div>
+      </div>
+    </header>
+
+    <router-outlet />
+  </div>
+}

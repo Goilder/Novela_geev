@@ -1,9 +1,0 @@
-Use case: stylized-concept
-Asset type: game asset for family educational visual novel
-Primary request: navigation and module icons
-Style/medium: soft flat folk game icons
-Composition/framing: isolated icon grid
-Constraints: family-friendly, child-safe, no aggression, no horror, no watermark, production-ready game asset
-Avoid: dark horror mood, cluttered composition, extra text, photorealism unless implied
-
-soft flat icon set for a family fairy-tale game UI, book, amulet ring, crossword letters, spoon, pancake, spark, reward badge, home, back, next, hint, warm folk palette, transparent background

@@ -1,9 +1,0 @@
-Use case: stylized-concept
-Asset type: game asset for family educational visual novel
-Primary request: family completion certificate
-Style/medium: folk decorative printable reward
-Composition/framing: A4 portrait with central name field
-Constraints: family-friendly, child-safe, no aggression, no horror, no watermark, production-ready game asset
-Avoid: dark horror mood, cluttered composition, extra text, photorealism unless implied
-
-family achievement certificate for a fairy-tale educational game, warm parchment, elegant Mari-inspired ornament border, central space for names, festive but soft presentation, A4 layout

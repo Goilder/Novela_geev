@@ -1,9 +1,0 @@
-Use case: stylized-concept
-Asset type: game asset for family educational visual novel
-Primary request: module 2 amulet crafting scene
-Style/medium: cozy craft table environment
-Composition/framing: ribbons, cardboard ring, threads, beads, central work area
-Constraints: family-friendly, child-safe, no aggression, no horror, no watermark, production-ready game asset
-Avoid: dark horror mood, cluttered composition, extra text, photorealism unless implied
-
-cozy craft workshop table for making a family amulet, cardboard circle, ribbons, threads, beads, markers, glue, warm indoor light, folk decorative details, visual novel background, 16:9

@@ -1,9 +1,0 @@
-Use case: stylized-concept
-Asset type: game asset for family educational visual novel
-Primary request: dialogue container
-Style/medium: warm visual novel interface
-Composition/framing: main panel plus character name plate
-Constraints: family-friendly, child-safe, no aggression, no horror, no watermark, production-ready game asset
-Avoid: dark horror mood, cluttered composition, extra text, photorealism unless implied
-
-visual novel dialogue box UI, milk-white semi-transparent panel, elegant folk-inspired embroidery frame, warm soft interface for children and parents, transparent background

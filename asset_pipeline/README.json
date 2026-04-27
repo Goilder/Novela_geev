@@ -1,9 +1,0 @@
-{
-  "asset_count": 20,
-  "manifest": "G:\\Project all\\Novela-bl9t\\docs\\pampalche_asset_manifest.json",
-  "queue_json": "G:\\Project all\\Novela-bl9t\\asset_pipeline\\batches\\imagegen_queue.json",
-  "queue_jsonl": "G:\\Project all\\Novela-bl9t\\asset_pipeline\\batches\\imagegen_queue.jsonl",
-  "prompts_dir": "G:\\Project all\\Novela-bl9t\\asset_pipeline\\prompts",
-  "output_root": "G:\\Project all\\Novela-bl9t\\asset_pipeline\\output",
-  "status_file": "G:\\Project all\\Novela-bl9t\\asset_pipeline\\reviews\\generation_status.json"
-}

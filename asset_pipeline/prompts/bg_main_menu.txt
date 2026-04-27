@@ -1,9 +1,0 @@
-Use case: stylized-concept
-Asset type: game asset for family educational visual novel
-Primary request: main navigation screen
-Style/medium: painterly cozy visual novel background
-Composition/framing: house, path, forest, open area for logo and buttons
-Constraints: family-friendly, child-safe, no aggression, no horror, no watermark, production-ready game asset
-Avoid: dark horror mood, cluttered composition, extra text, photorealism unless implied
-
-cozy fairy-tale main menu background for a family educational visual novel, path leading from a warm house to an enchanted forest, morning light, Mari folk decorative accents, soft painterly background, clean space for logo and buttons, 16:9

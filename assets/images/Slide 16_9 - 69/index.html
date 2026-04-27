@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Сереброзубая Пампалче — образовательная игра</title>
+  <meta name="description" content="Стартовая страница образовательной игры о Сереброзубой Пампалче из Республики Марий Эл." />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@500;600;700&display=swap');
+
+    :root {
+      --red: #c32b2b;
+      --red-dark: #9e1f1f;
+      --white: #ffffff;
+      --glass: rgba(83, 101, 76, 0.50);
+      --text-shadow: 0 4px 20px rgba(0, 0, 0, 0.28);
+      --ease: cubic-bezier(.2, .8, .2, 1);
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body { min-height: 100%; }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', Arial, sans-serif;
+      color: var(--white);
+      background: #102514;
+      overflow-x: hidden;
+    }
+
+    a, button { font: inherit; }
+
+    .page {
+      min-height: 100vh;
+      position: relative;
+      isolation: isolate;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: grid;
+      align-items: center;
+      overflow: hidden;
+      background-image: url('assets/1553e1c8-6529-4490-a852-7cf8e15419b6.png');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(90deg, rgba(34, 48, 32, .50) 0%, rgba(44, 74, 48, .32) 35%, rgba(0, 0, 0, .03) 70%),
+        radial-gradient(circle at 16% 44%, rgba(240, 255, 243, .18), transparent 22%);
+    }
+
+    .glass-panel {
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: min(55vw, 960px);
+      z-index: 1;
+      background: var(--glass);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      clip-path: polygon(0 0, 64% 0, 100% 50%, 64% 100%, 0 100%);
+      box-shadow: inset -40px 0 80px rgba(255, 255, 255, .06);
+      pointer-events: none;
+    }
+
+    .ornament {
+      position: absolute;
+      z-index: 3;
+      pointer-events: none;
+      user-select: none;
+      filter: drop-shadow(0 6px 12px rgba(0, 0, 0, .12));
+    }
+
+    .ornament-main {
+      top: 50%;
+      left: 31.1%;
+      width: min(31vw, 560px);
+      transform: translateY(-50%);
+      opacity: .96;
+    }
+
+    .ornament-check {
+      top: -21vh;
+      left: 27.4%;
+      width: min(27vw, 420px);
+      opacity: .92;
+      transform: rotate(-1deg);
+    }
+
+    .ornament-diamond {
+      top: 18.5%;
+      left: 48.6%;
+      width: min(11vw, 178px);
+      opacity: .86;
+    }
+
+    .ornament-line {
+      right: -7vw;
+      top: -28vh;
+      width: min(33vw, 520px);
+      opacity: .38;
+      transform: rotate(2deg);
+    }
+
+    .content {
+      position: relative;
+      z-index: 4;
+      width: min(760px, 48vw);
+      padding-left: clamp(36px, 7vw, 138px);
+      padding-right: 24px;
+      transform: translateY(-3vh);
+    }
+
+    .eyebrow {
+      margin: 0 0 26px;
+      font-size: clamp(30px, 3.1vw, 58px);
+      line-height: 1.05;
+      font-weight: 400;
+      letter-spacing: .01em;
+      text-shadow: var(--text-shadow);
+    }
+
+    .title {
+      margin: 0 0 32px;
+      font-family: 'Oswald', 'Arial Narrow', Arial, sans-serif;
+      font-size: clamp(56px, 6.6vw, 132px);
+      line-height: .9;
+      font-weight: 700;
+      letter-spacing: -.035em;
+      text-shadow: var(--text-shadow);
+      white-space: nowrap;
+    }
+
+    .title .quote { font-family: inherit; }
+
+    .lead {
+      max-width: 620px;
+      margin: 0 0 42px;
+      font-size: clamp(20px, 1.55vw, 32px);
+      line-height: 1.18;
+      font-weight: 400;
+      text-shadow: 0 3px 12px rgba(0, 0, 0, .32);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 58px;
+      padding: 0 22px;
+      border: 0;
+      border-radius: 18px;
+      color: var(--white);
+      background: var(--red);
+      text-decoration: none;
+      font-size: clamp(18px, 1.35vw, 28px);
+      font-weight: 500;
+      box-shadow: 0 12px 32px rgba(110, 0, 0, .22);
+      transition: transform .24s var(--ease), background .24s var(--ease), box-shadow .24s var(--ease);
+      cursor: pointer;
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      background: var(--red-dark);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 18px 44px rgba(110, 0, 0, .34);
+      outline: none;
+    }
+
+    .button:active { transform: translateY(0) scale(.99); }
+
+    .girl {
+      position: absolute;
+      z-index: 4;
+      right: clamp(30px, 8vw, 132px);
+      bottom: clamp(28px, 3.4vw, 74px);
+      width: clamp(270px, 31vw, 570px);
+      max-height: 74vh;
+      object-fit: contain;
+      transform-origin: center bottom;
+      animation: floatGirl 4.6s var(--ease) infinite;
+      filter: drop-shadow(0 18px 24px rgba(0, 0, 0, .18));
+      pointer-events: none;
+    }
+
+    .hotspot {
+      position: absolute;
+      z-index: 5;
+      right: clamp(30px, 8vw, 132px);
+      bottom: clamp(28px, 3.4vw, 74px);
+      width: clamp(270px, 31vw, 570px);
+      height: 74vh;
+      max-height: 640px;
+      border-radius: 50%;
+      text-indent: -999px;
+      overflow: hidden;
+    }
+
+    .hotspot:focus-visible {
+      outline: 4px solid rgba(255, 255, 255, .85);
+      outline-offset: 6px;
+    }
+
+    .credit {
+      position: absolute;
+      z-index: 4;
+      right: 22px;
+      bottom: 16px;
+      margin: 0;
+      font-size: 13px;
+      opacity: .72;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, .5);
+    }
+
+    @keyframes floatGirl {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(.8deg); }
+    }
+
+    @media (max-width: 1100px) {
+      .glass-panel { width: 68vw; }
+      .ornament-main { left: 44%; width: 42vw; opacity: .86; }
+      .ornament-check { left: 39%; width: 34vw; }
+      .ornament-diamond { left: 60%; width: 15vw; }
+      .ornament-line { right: -18vw; width: 47vw; opacity: .28; }
+      .content { width: min(720px, 70vw); }
+      .girl { right: -50px; width: clamp(270px, 38vw, 440px); opacity: .95; }
+      .hotspot { right: -50px; width: clamp(270px, 38vw, 440px); }
+    }
+
+    @media (max-width: 760px) {
+      .hero {
+        min-height: 760px;
+        align-items: start;
+        padding-top: 46px;
+      }
+
+      .hero::before {
+        background: linear-gradient(180deg, rgba(18, 38, 22, .56), rgba(12, 33, 17, .28));
+      }
+
+      .glass-panel {
+        width: 100%;
+        height: 62%;
+        clip-path: polygon(0 0, 100% 0, 100% 78%, 52% 100%, 0 78%);
+      }
+
+      .ornament-main {
+        top: 41%;
+        left: 38%;
+        width: 78vw;
+        opacity: .55;
+      }
+
+      .ornament-check {
+        top: -12vh;
+        left: 50%;
+        width: 62vw;
+        opacity: .45;
+      }
+
+      .ornament-diamond { display: none; }
+      .ornament-line { display: none; }
+
+      .content {
+        width: 100%;
+        padding: 0 24px;
+        transform: none;
+      }
+
+      .title {
+        white-space: normal;
+        max-width: 680px;
+      }
+
+      .eyebrow { margin-bottom: 18px; }
+      .lead { max-width: 540px; margin-bottom: 26px; }
+
+      .girl {
+        right: 50%;
+        bottom: 22px;
+        width: min(82vw, 420px);
+        transform: translateX(50%);
+        animation: none;
+      }
+
+      .hotspot {
+        right: 50%;
+        bottom: 22px;
+        width: min(82vw, 420px);
+        height: 360px;
+        transform: translateX(50%);
+      }
+
+      .credit { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="glass-panel" aria-hidden="true"></div>
+
+      <img class="ornament ornament-main" src="assets/ornament-side.png" alt="" aria-hidden="true" />
+      <img class="ornament ornament-check" src="assets/ornament-check.png" alt="" aria-hidden="true" />
+      <img class="ornament ornament-diamond" src="assets/ornament-diamond.png" alt="" aria-hidden="true" />
+      <img class="ornament ornament-line" src="assets/ornament-line-right.png" alt="" aria-hidden="true" />
+
+      <div class="content">
+        <h1 class="title" id="hero-title"><span class="quote">“</span>Сереброзубая Пампалче<span class="quote">”</span></h1>
+        <p class="eyebrow">Республика Марий Эл</p>
+        <p class="lead">Сказка повествует о смелой девочке по имени Сереброзубая Пампалче. Её жизнь захватывающая и интересная. Сегодня вы с ней познакомитесь через образовательную игру.</p>
+        <div class="actions" aria-label="Основные действия">
+          <a class="button" id="game" href="game.html" onclick="alert('Здесь можно подключить первый экран игры'); return false;" aria-label="Начать образовательную игру">Начать игру</a>
+        </div>
+      </div>
+
+      <img class="girl" src="assets/hero-girl.png" alt="Сереброзубая Пампалче в национальном костюме" />
+      <a class="hotspot" href="game.html" onclick="alert('Здесь можно подключить экран персонажа или первый диалог'); return false;" aria-label="Нажмите на персонажа, чтобы начать знакомство">Персонаж</a>
+      <p class="credit">Республика Марий Эл</p>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,218 +1,66 @@
 {
-  "project": {
-    "id": "pampalche_visual_package",
-    "title": "Poka vse vmeste - visual style and asset manifest",
-    "source_story_file": "G:\\Project all\\Novela-bl9t\\pampalche_game_content.json"
-  },
-  "style": {
-    "visual_formula": "cozy japanese visual novel + family fairy tale + Mari folk motifs + safe educational game",
-    "palette": {
-      "base": ["#F7F1E3", "#E8D8BC", "#D6B98B", "#8A5A3C"],
-      "nature": ["#A8B88A", "#718C5A", "#C7D9B7"],
-      "ethnic_accents": ["#B6453A", "#C86D4A", "#8D3D3A"],
-      "magic": ["#DDE4F2", "#B8C7D9", "#F2E8C9"]
-    }
-  },
+  "version": 1,
+  "notes": "Каталог ролей ассетов для MVP. Файлы используются как фоновые сцены, обложки модулей и декоративные мотивы без смешивания с контентной логикой.",
   "assets": [
     {
-      "id": "char_pampalche_base",
-      "category": "character",
-      "purpose": "main guide character for scenes and navigation",
-      "style": "cozy VN, Mari-inspired, family-safe",
-      "composition": "full body front-facing readable silhouette",
-      "format": "PNG",
-      "transparent_background": true,
-      "prompt": "kind brave caring fairy-tale heroine, japanese visual novel character design, Mari-inspired folk costume, linen blouse, terracotta dress layer, geometric red embroidery, woven belt, small silver ornaments, subtle silver glow in smile, chestnut braided hair, warm expressive eyes, family-friendly educational game, cozy lighting, clean silhouette, full body, transparent background"
+      "path": "assets/images/Slide 16_9 - 69.png",
+      "role": "home-hero",
+      "usage": "Главное меню и вступительный hero-экран"
     },
     {
-      "id": "char_pampalche_expressions",
-      "category": "character_sheet",
-      "purpose": "dialogue emotion variants",
-      "style": "visual novel sprite sheet",
-      "composition": "consistent head and torso expression set",
-      "format": "PNG",
-      "transparent_background": true,
-      "prompt": "expression sheet of a warm fairy-tale guide heroine, japanese visual novel sprite sheet, Mari-inspired costume, neutral, happy, surprised, thoughtful, caring, encouraging, proud, festive joyful, consistent hairstyle and clothing, transparent background, polished game asset"
+      "path": "assets/images/Slide 16_9 - 98.png",
+      "role": "map-background",
+      "usage": "Карта модулей и общая сценическая подложка"
     },
     {
-      "id": "char_family_set",
-      "category": "character",
-      "purpose": "co-play family scenes",
-      "style": "soft semi-anime, cozy family game",
-      "composition": "mother father two children, full body sprites",
-      "format": "PNG",
-      "transparent_background": true,
-      "prompt": "friendly family character set for a cozy educational visual novel, mother father two children, warm expressions, soft semi-anime style, subtle Mari folk textile details in clothing, safe and approachable design, full body sprites, transparent background"
+      "path": "assets/images/Slide 16_9 - 92.png",
+      "role": "module-cover",
+      "usage": "Сцена модуля 1"
     },
     {
-      "id": "char_helper_mascots",
-      "category": "character",
-      "purpose": "hints, rewards, decorative support",
-      "style": "storybook mascot",
-      "composition": "small isolated characters",
-      "format": "PNG",
-      "transparent_background": true,
-      "prompt": "cute magical helper mascots for a family fairy-tale game, tiny spark spirit, friendly bird, squirrel, hedgehog, warm storybook colors, non-scary, soft rounded shapes, transparent background"
+      "path": "assets/images/Slide 16_9 - 93.png",
+      "role": "module-cover",
+      "usage": "Сцена модуля 2"
     },
     {
-      "id": "bg_main_menu",
-      "category": "background",
-      "purpose": "main navigation screen",
-      "style": "painterly cozy visual novel background",
-      "composition": "house, path, forest, open area for logo and buttons",
-      "format": "PNG",
-      "transparent_background": false,
-      "prompt": "cozy fairy-tale main menu background for a family educational visual novel, path leading from a warm house to an enchanted forest, morning light, Mari folk decorative accents, soft painterly background, clean space for logo and buttons, 16:9"
+      "path": "assets/images/Slide 16_9 - 94.png",
+      "role": "module-cover",
+      "usage": "Сцена модуля 3"
     },
     {
-      "id": "bg_intro_clearing",
-      "category": "background",
-      "purpose": "opening scene with Pampalche",
-      "style": "gentle magical forest clearing",
-      "composition": "center stage for character entrance",
-      "format": "PNG",
-      "transparent_background": false,
-      "prompt": "gentle enchanted forest clearing with silver magical glow, welcoming atmosphere, safe for children, soft grass and flowers, a place for a fairy-tale guide to appear, painterly visual novel background, 16:9"
+      "path": "assets/images/Slide 16_9 - 95.png",
+      "role": "module-cover",
+      "usage": "Сцена модуля 4"
     },
     {
-      "id": "bg_literary_screen",
-      "category": "background",
-      "purpose": "module 1 story and discussion scene",
-      "style": "magical story glade",
-      "composition": "silver luminous screen with free lower UI zone",
-      "format": "PNG",
-      "transparent_background": false,
-      "prompt": "forest glade with a silver luminous story screen, magical family-safe atmosphere, warm light, subtle floating particles, Mari-inspired fairy-tale visual novel background, space for character sprites and dialogue box, 16:9"
+      "path": "assets/images/Slide 16_9 - 96.png",
+      "role": "awards-background",
+      "usage": "Экран наград и общий celebration state"
     },
     {
-      "id": "bg_home_talk",
-      "category": "background",
-      "purpose": "discussion and reflection scenes",
-      "style": "warm wooden family interior",
-      "composition": "table, bench, stove, books, window",
-      "format": "PNG",
-      "transparent_background": false,
-      "prompt": "warm wooden family home interior, embroidered textiles, books, table, bench, stove, soft window light, Mari-inspired decor, cozy educational visual novel background, 16:9"
+      "path": "assets/images/Slide 16_9 - 97.png",
+      "role": "final-background",
+      "usage": "Финальный экран и сертификат"
     },
     {
-      "id": "bg_workshop_amulet",
-      "category": "background",
-      "purpose": "module 2 amulet crafting scene",
-      "style": "cozy craft table environment",
-      "composition": "ribbons, cardboard ring, threads, beads, central work area",
-      "format": "PNG",
-      "transparent_background": false,
-      "prompt": "cozy craft workshop table for making a family amulet, cardboard circle, ribbons, threads, beads, markers, glue, warm indoor light, folk decorative details, visual novel background, 16:9"
+      "path": "assets/images/Group 189.png",
+      "role": "ornament-rune",
+      "usage": "Вертикальный орнамент и акцентные разделители"
     },
     {
-      "id": "bg_crossword_ui",
-      "category": "background",
-      "purpose": "module 3 crossword scene",
-      "style": "ornamental educational UI background",
-      "composition": "clean center for puzzle grid",
-      "format": "PNG",
-      "transparent_background": false,
-      "prompt": "decorative crossword screen background for a cozy educational game, glowing patterned grid, linen texture, folk ornament frame, clean center for puzzle interaction, warm readable colors, 16:9"
+      "path": "assets/images/Group 2087328016.png",
+      "role": "frame-rune",
+      "usage": "Рамка для story-карточек и сертификата"
     },
     {
-      "id": "bg_kitchen",
-      "category": "background",
-      "purpose": "module 4 cooking scene",
-      "style": "bright rustic family kitchen",
-      "composition": "oven, table, bowl, milk, eggs, flour, spoon",
-      "format": "PNG",
-      "transparent_background": false,
-      "prompt": "bright rustic kitchen with oven, wooden table, bowl, eggs, milk, flour, wooden spoon, embroidered towels, warm golden light, family-friendly visual novel background, 16:9"
+      "path": "assets/images/Vector 146.png",
+      "role": "flora-accent",
+      "usage": "Легкие растительные акценты"
     },
     {
-      "id": "bg_final_feast",
-      "category": "background",
-      "purpose": "final celebration scene",
-      "style": "cozy festive visual novel background",
-      "composition": "family table, pancakes, four glowing sparks, shared celebration",
-      "format": "PNG",
-      "transparent_background": false,
-      "prompt": "festive family table in a fairy-tale home, pancakes, warm lights, four glowing sparks of family warmth, Pampalche and family together, cozy celebratory visual novel background, 16:9"
-    },
-    {
-      "id": "prop_amulet_ring",
-      "category": "prop",
-      "purpose": "module 2 interactive craft object",
-      "style": "storybook prop illustration",
-      "composition": "isolated folk amulet ring with ribbons",
-      "format": "PNG",
-      "transparent_background": true,
-      "prompt": "folk protective family amulet ring made of cardboard and ribbons, simple geometric patterns, warm handmade children’s craft style, isolated object, transparent background"
-    },
-    {
-      "id": "prop_crossword_cells",
-      "category": "prop",
-      "purpose": "module 3 puzzle UI elements",
-      "style": "soft educational UI asset",
-      "composition": "grid cells, glow states, highlight tiles",
-      "format": "SVG/PNG",
-      "transparent_background": true,
-      "prompt": "set of glowing crossword cells and decorative puzzle tiles for a cozy folk educational game, clean readable shape language, warm linen and sage palette, transparent background"
-    },
-    {
-      "id": "prop_kitchen_set",
-      "category": "prop",
-      "purpose": "module 4 ingredient and utensil assets",
-      "style": "friendly kitchen prop illustration",
-      "composition": "bowl, wooden spoon, milk, eggs, flour, pancake stack",
-      "format": "PNG",
-      "transparent_background": true,
-      "prompt": "cozy rustic kitchen prop set for a family cooking game, bowl, wooden spoon, milk bottle, eggs, flour bag, pancake stack, warm soft illustration, transparent background"
-    },
-    {
-      "id": "ui_button_set",
-      "category": "ui",
-      "purpose": "core menu and action buttons",
-      "style": "linen and carved wood fairy-tale UI",
-      "composition": "default, hover, pressed, disabled states",
-      "format": "SVG/PNG",
-      "transparent_background": true,
-      "prompt": "UI button set for a cozy fairy-tale educational visual novel, rounded rectangular buttons, linen and carved wood texture, warm beige, terracotta and sage palette, subtle folk embroidery border, child-friendly readability, transparent background"
-    },
-    {
-      "id": "ui_dialog_frame",
-      "category": "ui",
-      "purpose": "dialogue container",
-      "style": "warm visual novel interface",
-      "composition": "main panel plus character name plate",
-      "format": "PNG",
-      "transparent_background": true,
-      "prompt": "visual novel dialogue box UI, milk-white semi-transparent panel, elegant folk-inspired embroidery frame, warm soft interface for children and parents, transparent background"
-    },
-    {
-      "id": "ui_icon_set",
-      "category": "ui",
-      "purpose": "navigation and module icons",
-      "style": "soft flat folk game icons",
-      "composition": "isolated icon grid",
-      "format": "SVG/PNG",
-      "transparent_background": true,
-      "prompt": "soft flat icon set for a family fairy-tale game UI, book, amulet ring, crossword letters, spoon, pancake, spark, reward badge, home, back, next, hint, warm folk palette, transparent background"
-    },
-    {
-      "id": "reward_set",
-      "category": "reward",
-      "purpose": "badges and four story sparks",
-      "style": "friendly celebratory folk fantasy",
-      "composition": "centered emblems",
-      "format": "PNG",
-      "transparent_background": true,
-      "prompt": "reward badges and glowing spark emblems for a family educational fairy-tale game, warm gold, red ribbons, silver glow, folk decorative accents, child-friendly celebratory style, transparent background"
-    },
-    {
-      "id": "ui_certificate_template",
-      "category": "reward",
-      "purpose": "family completion certificate",
-      "style": "folk decorative printable reward",
-      "composition": "A4 portrait with central name field",
-      "format": "PNG/PDF",
-      "transparent_background": false,
-      "prompt": "family achievement certificate for a fairy-tale educational game, warm parchment, elegant Mari-inspired ornament border, central space for names, festive but soft presentation, A4 layout"
+      "path": "assets/images/Vector 147.png",
+      "role": "flora-accent",
+      "usage": "Легкие растительные акценты"
     }
   ]
 }

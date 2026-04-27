@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
+import { FIGMA_ASSETS } from '../figma-assets';
 import { ContentService } from '../services/content.service';
 import { ProgressService } from '../services/progress.service';
 
@@ -10,19 +11,14 @@ import { ProgressService } from '../services/progress.service';
   selector: 'app-module-map-page',
   imports: [CommonModule, RouterLink],
   template: `
-    <section class="map-page" *ngIf="content.content() as game">
-      <div class="map-page__intro card">
-        <span class="eyebrow">Карта путешествия</span>
-        <h1>Семейный путь из четырех искр</h1>
-        <p>{{ game.general_story.premise }}</p>
-      </div>
-
+    <section class="map-page" *ngIf="content.content() as game" [style.background-image]="'url(' + assets.mapPath + ')'">
+      <div class="map-page__veil"></div>
       <div class="map-grid">
         <article class="module-card"
           *ngFor="let module of game.modules; let i = index"
           [class.module-card--locked]="!progress.isModuleUnlocked(module.id)"
           [class.module-card--done]="progress.isModuleCompleted(module.id)">
-          <div class="module-card__index">0{{ i + 1 }}</div>
+          <div class="module-card__index">{{ i + 1 }}</div>
           <h2>{{ module.title }}</h2>
           <p>{{ module.subtitle }}</p>
 
@@ -50,32 +46,28 @@ import { ProgressService } from '../services/progress.service';
   `,
   styles: [`
     .map-page {
-      display: grid;
-      gap: 1.25rem;
+      min-height: calc(100dvh - 80px);
+      position: relative;
+      background-position: center;
+      background-size: cover;
+      overflow: hidden;
+      padding: 3rem 2rem;
     }
 
-    .card {
-      padding: 1.5rem;
-      border-radius: 2rem;
-      background: rgba(255, 251, 244, 0.84);
-      border: 1px solid rgba(138, 90, 60, 0.14);
-      box-shadow: 0 18px 44px rgba(90, 58, 41, 0.08);
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      padding: 0.45rem 0.8rem;
-      border-radius: 999px;
-      background: rgba(199, 217, 183, 0.52);
-      color: #557043;
-      font-weight: 700;
-      margin-bottom: 0.9rem;
+    .map-page__veil {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.02));
     }
 
     .map-grid {
+      position: relative;
+      z-index: 1;
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1rem;
+      gap: 1.25rem;
+      max-width: 78rem;
+      margin-left: auto;
     }
 
     .module-card {
@@ -85,16 +77,14 @@ import { ProgressService } from '../services/progress.service';
       padding: 1.4rem;
       min-height: 16rem;
       border-radius: 2rem;
-      background:
-        linear-gradient(180deg, rgba(255, 251, 244, 0.96), rgba(245, 236, 219, 0.86)),
-        #fff;
-      border: 1px solid rgba(138, 90, 60, 0.16);
-      box-shadow: 0 18px 40px rgba(90, 58, 41, 0.08);
+      background: rgba(198, 221, 77, 0.64);
+      backdrop-filter: blur(12px);
+      border: 2px solid rgba(255, 255, 255, 0.72);
+      box-shadow: 0 22px 52px rgba(0, 0, 0, 0.18);
     }
 
     .module-card--done {
-      border-color: rgba(113, 140, 90, 0.36);
-      box-shadow: 0 20px 42px rgba(113, 140, 90, 0.14);
+      box-shadow: 0 20px 42px rgba(113, 140, 90, 0.24);
     }
 
     .module-card--locked {
@@ -107,13 +97,18 @@ import { ProgressService } from '../services/progress.service';
       display: grid;
       place-items: center;
       border-radius: 50%;
-      background: rgba(182, 69, 58, 0.12);
-      color: #8d3d3a;
+      background: rgba(255, 255, 255, 0.88);
+      color: #294000;
       font-weight: 800;
     }
 
+    .module-card h2,
+    .module-card p,
     .module-card__status {
-      color: #6b5a4f;
+      color: #173100;
+    }
+
+    .module-card__status {
       font-weight: 700;
     }
 
@@ -124,26 +119,33 @@ import { ProgressService } from '../services/progress.service';
       align-items: center;
       min-height: 3rem;
       border-radius: 999px;
-      background: linear-gradient(135deg, #718c5a, #8fa676);
+      background: rgba(255, 255, 255, 0.24);
       color: #fffcf8;
       text-decoration: none;
       font-weight: 700;
       padding: 0.75rem 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.75);
     }
 
     .module-card__cta--locked {
-      background: rgba(138, 90, 60, 0.08);
-      color: #8a5a3c;
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
     }
 
     @media (max-width: 860px) {
+      .map-page {
+        padding: 1rem;
+      }
+
       .map-grid {
         grid-template-columns: 1fr;
+        margin-left: 0;
       }
     }
   `]
 })
 export class ModuleMapPageComponent {
+  readonly assets = FIGMA_ASSETS;
   readonly content = inject(ContentService);
   readonly progress = inject(ProgressService);
 }

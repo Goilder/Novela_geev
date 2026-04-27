@@ -3,6 +3,7 @@ import { Component, computed, effect, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
+import { FIGMA_ASSETS } from '../figma-assets';
 import {
   BranchingChoice,
   CrosswordEntry,
@@ -22,7 +23,8 @@ import { ProgressService } from '../services/progress.service';
   imports: [CommonModule, FormsModule, RouterLink],
   template: `
     <ng-container *ngIf="module() as currentModule; else missingModule">
-      <section class="module-page" *ngIf="isUnlocked(); else lockedModule">
+      <section class="module-page" *ngIf="isUnlocked(); else lockedModule" [style.background-image]="'url(' + moduleBackground() + ')'">
+        <div class="module-page__veil"></div>
         <header class="module-hero card">
           <div>
             <span class="eyebrow">Модуль {{ moduleNumber() }}</span>
@@ -355,23 +357,40 @@ import { ProgressService } from '../services/progress.service';
       gap: 1rem;
     }
 
+    .module-page {
+      min-height: calc(100dvh - 80px);
+      position: relative;
+      background-position: center;
+      background-size: cover;
+      padding: 2rem;
+      align-content: start;
+    }
+
+    .module-page__veil {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+    }
+
     .card,
     .scene-card {
+      position: relative;
+      z-index: 1;
       padding: 1.4rem;
       border-radius: 2rem;
-      background: rgba(255, 251, 244, 0.84);
-      border: 1px solid rgba(138, 90, 60, 0.14);
-      box-shadow: 0 18px 44px rgba(90, 58, 41, 0.08);
+      background: rgba(198, 221, 77, 0.56);
+      backdrop-filter: blur(14px);
+      border: 2px solid rgba(255, 255, 255, 0.72);
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.18);
+      color: #173100;
     }
 
     .scene-card--hero {
-      background:
-        radial-gradient(circle at top right, rgba(221, 228, 242, 0.8), transparent 25%),
-        rgba(255, 251, 244, 0.88);
+      background: rgba(255, 250, 191, 0.7);
     }
 
     .scene-card--completion {
-      border-color: rgba(113, 140, 90, 0.32);
+      border-color: rgba(113, 140, 90, 0.5);
     }
 
     .module-hero {
@@ -379,14 +398,16 @@ import { ProgressService } from '../services/progress.service';
       align-items: flex-start;
       justify-content: space-between;
       gap: 1rem;
+      position: relative;
+      z-index: 1;
     }
 
     .eyebrow {
       display: inline-flex;
       padding: 0.45rem 0.8rem;
       border-radius: 999px;
-      background: rgba(199, 217, 183, 0.52);
-      color: #557043;
+      background: rgba(255, 255, 255, 0.7);
+      color: #294000;
       font-weight: 700;
       margin-bottom: 0.9rem;
     }
@@ -410,13 +431,13 @@ import { ProgressService } from '../services/progress.service';
 
     .ghost-link,
     .ghost-btn {
-      background: rgba(113, 140, 90, 0.12);
-      color: #5c6d48;
+      background: rgba(255, 255, 255, 0.24);
+      color: #173100;
     }
 
     .primary-link,
     .primary-btn {
-      background: linear-gradient(135deg, #c86d4a, #b6453a);
+      background: rgba(201, 68, 68, 0.92);
       color: #fffaf6;
     }
 
@@ -431,7 +452,7 @@ import { ProgressService } from '../services/progress.service';
       margin-top: 1rem;
       padding: 1rem;
       border-radius: 1.4rem;
-      background: rgba(247, 241, 227, 0.8);
+      background: rgba(255, 255, 255, 0.72);
     }
 
     .question-card h3 {
@@ -451,7 +472,7 @@ import { ProgressService } from '../services/progress.service';
       padding: 1rem;
       border-radius: 1.4rem;
       border: 1px solid rgba(138, 90, 60, 0.18);
-      background: #fffdf9;
+      background: rgba(255,255,255,0.95);
       cursor: pointer;
       display: grid;
       gap: 0.4rem;
@@ -465,8 +486,8 @@ import { ProgressService } from '../services/progress.service';
     .chip {
       padding: 0.7rem 0.95rem;
       border-radius: 999px;
-      background: rgba(221, 228, 242, 0.8);
-      color: #556071;
+      background: rgba(255, 255, 255, 0.85);
+      color: #294000;
       font-weight: 700;
     }
 
@@ -490,7 +511,7 @@ import { ProgressService } from '../services/progress.service';
       margin-top: 0.45rem;
       border-radius: 1rem;
       border: 1px solid rgba(138, 90, 60, 0.2);
-      background: #fffdfa;
+      background: rgba(255,255,255,0.95);
       padding: 0.85rem 1rem;
       font: inherit;
       color: inherit;
@@ -504,7 +525,7 @@ import { ProgressService } from '../services/progress.service';
     .crossword-row {
       padding: 1rem;
       border-radius: 1.4rem;
-      background: rgba(247, 241, 227, 0.8);
+      background: rgba(255,255,255,0.72);
     }
 
     .crossword-row__meta {
@@ -549,6 +570,10 @@ import { ProgressService } from '../services/progress.service';
         flex-direction: column;
       }
 
+      .module-page {
+        padding: 1rem;
+      }
+
       .crossword-row__input {
         flex-direction: column;
         align-items: stretch;
@@ -557,6 +582,7 @@ import { ProgressService } from '../services/progress.service';
   `]
 })
 export class ModulePageComponent {
+  readonly assets = FIGMA_ASSETS;
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
   readonly content = inject(ContentService);
@@ -568,6 +594,20 @@ export class ModulePageComponent {
   readonly isUnlocked = computed(() => this.progress.isModuleUnlocked(this.moduleId()));
   readonly moduleNumber = computed(() => this.moduleId().replace('module_', ''));
   readonly moduleState = computed<ModuleProgressData>(() => this.progress.progress().moduleData[this.moduleId()] ?? {});
+  readonly moduleBackground = computed(() => {
+    switch (this.moduleId()) {
+      case 'module_1':
+        return this.assets.moduleLiterary;
+      case 'module_2':
+        return this.assets.moduleCraft;
+      case 'module_3':
+        return this.assets.moduleQuestions;
+      case 'module_4':
+        return this.assets.moduleCooking;
+      default:
+        return this.assets.homeBackgroundClean;
+    }
+  });
   readonly choice = computed<BranchingChoice | null>(() => {
     const current = this.module();
     if (!current || current.id !== 'module_1') {

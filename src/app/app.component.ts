@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, computed, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
+import { FIGMA_ASSETS } from './figma-assets';
 import { ContentService } from './services/content.service';
 import { ProgressService } from './services/progress.service';
 
@@ -13,24 +14,28 @@ import { ProgressService } from './services/progress.service';
     <div class="app-shell" [class.app-shell--ready]="content.ready()">
       <header class="topbar">
         <a routerLink="/" class="brand">
-          <span class="brand__mark">П</span>
+          <span class="brand__mark">
+            <img [src]="assets.ornamentVertical" alt="">
+          </span>
           <div>
             <strong>Пока все вместе</strong>
-            <div class="brand__meta">Путешествие с Пампалче</div>
+            <div class="brand__meta">Образовательная игровая платформа</div>
           </div>
         </a>
 
         <nav class="topbar__nav">
-          <a routerLink="/map" routerLinkActive="is-active">Карта</a>
-          <a routerLink="/rewards" routerLinkActive="is-active">Награды</a>
-          <a routerLink="/final" routerLinkActive="is-active">Финал</a>
+          <a routerLink="/modules/module_1" routerLinkActive="is-active">Литература</a>
+          <a routerLink="/modules/module_2" routerLinkActive="is-active">Мастер класс</a>
+          <a routerLink="/modules/module_4" routerLinkActive="is-active">Кухня</a>
+          <a routerLink="/modules/module_3" routerLinkActive="is-active">Интеллектуальный</a>
+          <a routerLink="/rewards" routerLinkActive="is-active">О нас</a>
         </nav>
       </header>
 
       <main class="app-main">
         <section class="loading-card" *ngIf="isLoading(); else readyBlock">
           <h1>Загрузка истории</h1>
-          <p>Собираем сюжет, модули и визуальную тему Пампалче.</p>
+          <p>Собираем сюжет, модули и дизайн-ассеты из Figma.</p>
         </section>
 
         <ng-template #readyBlock>
@@ -47,11 +52,8 @@ import { ProgressService } from './services/progress.service';
 
     .app-shell {
       min-height: 100dvh;
-      background:
-        radial-gradient(circle at top right, rgba(221, 228, 242, 0.65), transparent 30%),
-        radial-gradient(circle at left bottom, rgba(199, 217, 183, 0.45), transparent 25%),
-        linear-gradient(180deg, #f7f1e3 0%, #efe1c8 100%);
-      color: #533629;
+      background: #111;
+      color: #fff;
     }
 
     .topbar {
@@ -63,9 +65,9 @@ import { ProgressService } from './services/progress.service';
       position: sticky;
       top: 0;
       z-index: 10;
-      background: rgba(247, 241, 227, 0.88);
+      background: rgba(16, 28, 46, 0.25);
       backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(138, 90, 60, 0.12);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .brand {
@@ -77,19 +79,25 @@ import { ProgressService } from './services/progress.service';
     }
 
     .brand__mark {
-      width: 2.8rem;
-      height: 2.8rem;
-      display: grid;
-      place-items: center;
+      width: 3rem;
+      height: 3rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       border-radius: 50%;
-      background: linear-gradient(135deg, #c86d4a, #b6453a);
-      color: #fff8f2;
-      font-weight: 700;
-      box-shadow: 0 10px 24px rgba(182, 69, 58, 0.2);
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+      overflow: hidden;
+    }
+
+    .brand__mark img {
+      width: 1.25rem;
+      height: 1.25rem;
+      object-fit: contain;
     }
 
     .brand__meta {
-      color: #7f6a5c;
+      color: rgba(255, 255, 255, 0.75);
       font-size: 0.875rem;
     }
 
@@ -101,45 +109,44 @@ import { ProgressService } from './services/progress.service';
 
     .topbar__nav a {
       text-decoration: none;
-      color: #6d4a35;
+      color: #fff;
       padding: 0.75rem 1rem;
       border-radius: 999px;
       font-weight: 600;
+      background: rgba(236, 241, 250, 0.35);
     }
 
     .topbar__nav a.is-active,
     .topbar__nav a:hover {
-      background: rgba(182, 69, 58, 0.1);
-      color: #8d3d3a;
+      background: rgba(255, 255, 255, 0.48);
     }
 
     .app-main {
-      width: min(1180px, calc(100% - 2rem));
+      width: min(100%, 1920px);
       margin: 0 auto;
-      padding: 1.25rem 0 2rem;
+      padding: 0;
     }
 
     .loading-card {
+      margin: 1rem;
       padding: 2rem;
       border-radius: 2rem;
       background: rgba(255, 252, 247, 0.8);
+      color: #533629;
       border: 1px solid rgba(138, 90, 60, 0.15);
       box-shadow: 0 18px 44px rgba(90, 58, 41, 0.08);
     }
 
-    @media (max-width: 720px) {
+    @media (max-width: 900px) {
       .topbar {
         align-items: flex-start;
         flex-direction: column;
-      }
-
-      .app-main {
-        width: min(100% - 1rem, 1180px);
       }
     }
   `]
 })
 export class AppComponent {
+  readonly assets = FIGMA_ASSETS;
   readonly content = inject(ContentService);
   readonly progress = inject(ProgressService);
   readonly isLoading = computed(() => !this.content.ready());

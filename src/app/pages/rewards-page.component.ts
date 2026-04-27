@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, inject } from '@angular/core';
 
+import { FIGMA_ASSETS } from '../figma-assets';
 import { ContentService } from '../services/content.service';
 import { ProgressService } from '../services/progress.service';
 
@@ -9,48 +10,49 @@ import { ProgressService } from '../services/progress.service';
   selector: 'app-rewards-page',
   imports: [CommonModule],
   template: `
-    <section class="rewards-page" *ngIf="content.content() as game">
-      <header class="rewards-page__header card">
-        <span class="eyebrow">Награды</span>
-        <h1>Искры и семейные достижения</h1>
-        <p>Здесь собираются все шаги пути: разговор, творчество, забота и общий труд.</p>
-      </header>
+    <section class="rewards-page" *ngIf="content.content() as game" [style.background-image]="'url(' + assets.familyPlatform + ')'">
+      <div class="rewards-page__panel">
+        <header class="rewards-page__header">
+          <h1>Награды семьи</h1>
+          <p>Здесь собираются все шаги пути: разговор, творчество, забота и общий труд.</p>
+        </header>
 
-      <div class="reward-grid">
-        <article class="reward-card" *ngFor="let reward of rewardCards()"
-          [class.reward-card--earned]="earnedSet().has(reward.id)">
-          <div class="reward-card__icon">{{ earnedSet().has(reward.id) ? '✦' : '○' }}</div>
-          <h2>{{ reward.title }}</h2>
-          <p>{{ reward.text }}</p>
-          <div class="reward-card__status">
-            {{ earnedSet().has(reward.id) ? 'Получено' : 'Еще впереди' }}
-          </div>
-        </article>
+        <div class="reward-grid">
+          <article class="reward-card" *ngFor="let reward of rewardCards()"
+            [class.reward-card--earned]="earnedSet().has(reward.id)">
+            <div class="reward-card__icon">{{ earnedSet().has(reward.id) ? '✦' : '○' }}</div>
+            <h2>{{ reward.title }}</h2>
+            <p>{{ reward.text }}</p>
+            <div class="reward-card__status">
+              {{ earnedSet().has(reward.id) ? 'Получено' : 'Еще впереди' }}
+            </div>
+          </article>
+        </div>
       </div>
     </section>
   `,
   styles: [`
     .rewards-page {
-      display: grid;
-      gap: 1.2rem;
+      min-height: calc(100dvh - 80px);
+      background-position: center;
+      background-size: cover;
+      padding: 3rem 2rem;
     }
 
-    .card {
-      padding: 1.5rem;
+    .rewards-page__panel {
+      max-width: 72rem;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.24);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.45);
       border-radius: 2rem;
-      background: rgba(255, 251, 244, 0.84);
-      border: 1px solid rgba(138, 90, 60, 0.14);
-      box-shadow: 0 18px 44px rgba(90, 58, 41, 0.08);
+      padding: 1.5rem;
     }
 
-    .eyebrow {
-      display: inline-flex;
-      padding: 0.45rem 0.8rem;
-      border-radius: 999px;
-      background: rgba(242, 232, 201, 0.9);
-      color: #8a5a3c;
-      font-weight: 700;
-      margin-bottom: 0.9rem;
+    .rewards-page__header {
+      color: #fff;
+      text-align: center;
+      margin-bottom: 1rem;
     }
 
     .reward-grid {
@@ -62,9 +64,10 @@ import { ProgressService } from '../services/progress.service';
     .reward-card {
       padding: 1.35rem;
       border-radius: 1.6rem;
-      background: rgba(255, 250, 242, 0.8);
-      border: 1px solid rgba(138, 90, 60, 0.14);
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.5);
       opacity: 0.78;
+      color: #173100;
     }
 
     .reward-card--earned {
@@ -92,6 +95,10 @@ import { ProgressService } from '../services/progress.service';
     }
 
     @media (max-width: 980px) {
+      .rewards-page {
+        padding: 1rem;
+      }
+
       .reward-grid {
         grid-template-columns: 1fr;
       }
@@ -99,6 +106,7 @@ import { ProgressService } from '../services/progress.service';
   `]
 })
 export class RewardsPageComponent {
+  readonly assets = FIGMA_ASSETS;
   readonly content = inject(ContentService);
   readonly progress = inject(ProgressService);
 

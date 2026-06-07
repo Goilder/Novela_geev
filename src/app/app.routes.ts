@@ -5,11 +5,17 @@ import { FinalPageComponent } from './pages/final-page.component';
 import { HomePageComponent } from './pages/home-page.component';
 import { MapPageComponent } from './pages/map-page.component';
 import { ModulePageComponent } from './pages/module-page.component';
+import { SplashPageComponent } from './pages/splash-page.component';
 import { TransitionPageComponent } from './pages/transition-page.component';
 
 export const routes: Routes = [
   {
     path: '',
+    component: SplashPageComponent,
+    title: 'Пампалче | Начало путешествия',
+  },
+  {
+    path: 'menu',
     component: HomePageComponent,
     title: 'Пампалче | Главное меню',
   },

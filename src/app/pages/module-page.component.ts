@@ -3,6 +3,9 @@ import { Component, computed, effect, inject, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs';
+import { ModuleStep } from '../core/models/game-content.model';
+import { ContentService } from '../core/services/content.service';
+import { ProgressService } from '../core/services/progress.service';
 import { ChoiceCardComponent } from '../shared/components/choice-card.component';
 import { CrosswordCardComponent } from '../shared/components/crossword-card.component';
 import { DialogueCardComponent } from '../shared/components/dialogue-card.component';
@@ -11,9 +14,6 @@ import { ProgressBannerComponent } from '../shared/components/progress-banner.co
 import { QuizCardComponent } from '../shared/components/quiz-card.component';
 import { ReflectionCardComponent } from '../shared/components/reflection-card.component';
 import { VideoCardComponent } from '../shared/components/video-card.component';
-import { ModuleStep } from '../core/models/game-content.model';
-import { ContentService } from '../core/services/content.service';
-import { ProgressService } from '../core/services/progress.service';
 
 @Component({
   selector: 'app-module-page',
@@ -43,9 +43,68 @@ import { ProgressService } from '../core/services/progress.service';
         />
 
         <div class="module-toolbar">
-          <a class="btn btn--ghost" routerLink="/map">Вернуться к карте</a>
-          <span class="status-chip status-chip--warm">Награда за модуль: {{ currentModule.reward.sparks }} искр</span>
+          <div class="module-toolbar__actions">
+            <a class="btn btn--ghost" routerLink="/map">Вернуться к карте</a>
+            <button
+              class="icon-button"
+              type="button"
+              aria-label="О модуле"
+              title="О модуле"
+              (click)="helpOpen.set(true)"
+            >
+              ?
+            </button>
+          </div>
+          <span class="status-chip status-chip--warm">
+            Награда за модуль: {{ currentModule.reward.sparks }} искр
+          </span>
         </div>
+
+        @if (helpOpen()) {
+          <div class="dialog-backdrop" (click)="helpOpen.set(false)">
+            <section class="story-card story-card--soft module-help-modal" (click)="$event.stopPropagation()">
+              <div class="module-help-modal__header">
+                <div>
+                  <p class="eyebrow">О модуле</p>
+                  <h2>{{ currentModule.title }}</h2>
+                </div>
+                <button
+                  class="icon-button icon-button--ghost"
+                  type="button"
+                  aria-label="Закрыть"
+                  (click)="helpOpen.set(false)"
+                >
+                  ×
+                </button>
+              </div>
+
+              <p>{{ currentModule.summary }}</p>
+
+              @if (currentModule.learningGoal) {
+                <div class="tip-pill"><strong>Цель:</strong> {{ currentModule.learningGoal }}</div>
+              }
+              @if (currentModule.culturalFocus) {
+                <div class="tip-pill"><strong>Культурный акцент:</strong> {{ currentModule.culturalFocus }}</div>
+              }
+              @if (currentModule.familyValues?.length) {
+                <div class="highlight-grid">
+                  @for (value of currentModule.familyValues ?? []; track value) {
+                    <div class="highlight-chip">{{ value }}</div>
+                  }
+                </div>
+              }
+              @if (currentModule.conceptHighlights?.length) {
+                <div class="clue-list">
+                  @for (item of currentModule.conceptHighlights ?? []; track item) {
+                    <div class="clue-item clue-item--static">
+                      <span>{{ item }}</span>
+                    </div>
+                  }
+                </div>
+              }
+            </section>
+          </div>
+        }
 
         <section class="step-stage">
           @if (currentStep(); as step) {
@@ -110,6 +169,7 @@ export class ModulePageComponent {
   );
 
   protected readonly currentStepIndex = signal(0);
+  protected readonly helpOpen = signal(false);
   protected readonly module = computed(() => this.contentService.getModuleById(this.moduleId()));
   protected readonly currentStep = computed(() => {
     const module = this.module();

@@ -1,9 +1,9 @@
 import { CommonModule, DatePipe } from '@angular/common';
 import { Component, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { ProgressBannerComponent } from '../shared/components/progress-banner.component';
 import { ContentService } from '../core/services/content.service';
 import { ProgressService } from '../core/services/progress.service';
+import { ProgressBannerComponent } from '../shared/components/progress-banner.component';
 
 @Component({
   selector: 'app-final-page',
@@ -46,8 +46,18 @@ import { ProgressService } from '../core/services/progress.service';
               }
             </div>
 
+            <div class="clue-list">
+              @for (requirement of gameContent.finale.requirements; track requirement) {
+                <div class="clue-item clue-item--static">
+                  <span>{{ requirement }}</span>
+                </div>
+              }
+            </div>
+
             <div class="button-row">
-              <button class="btn btn--primary" type="button" (click)="printCertificate()">Распечатать сертификат</button>
+              <button class="btn btn--primary" type="button" (click)="printCertificate()">
+                Распечатать сертификат
+              </button>
               <a class="btn btn--ghost" routerLink="/awards">Назад к наградам</a>
             </div>
           </article>
@@ -55,15 +65,29 @@ import { ProgressService } from '../core/services/progress.service';
           <article class="story-card story-card--soft">
             <p class="eyebrow">Память о путешествии</p>
             <h2>Семейные фото</h2>
-            @if (photos().length) {
+            @if (galleryEntries().length) {
               <div class="photo-gallery">
-                @for (photo of photos(); track photo) {
-                  <img [src]="photo" alt="Семейный результат" />
+                @for (entry of galleryEntries(); track entry.photoDataUrl) {
+                  <figure class="gallery-card">
+                    <img [src]="entry.photoDataUrl" alt="Семейный результат" />
+                    @if (entry.caption) {
+                      <figcaption>{{ entry.caption }}</figcaption>
+                    }
+                  </figure>
                 }
               </div>
             } @else {
               <p>Фото появятся здесь, если вы загрузили их в модулях.</p>
             }
+
+            <h3>Как выдается сертификат</h3>
+            <div class="clue-list">
+              @for (line of gameContent.finale.issueScenario; track line) {
+                <div class="clue-item clue-item--static">
+                  <span>{{ line }}</span>
+                </div>
+              }
+            </div>
 
             <h3>Пройденные модули</h3>
             <div class="tip-list">
@@ -83,7 +107,7 @@ export class FinalPageComponent {
 
   protected readonly content = this.contentService.content;
   protected readonly modules = computed(() => this.contentService.modules());
-  protected readonly photos = computed(() => this.progressService.getModulePhotoEntries());
+  protected readonly galleryEntries = computed(() => this.progressService.getPhotoGalleryEntries());
   protected readonly childName = computed(
     () => this.progressService.state().familyProfile.childName || 'Юный участник',
   );

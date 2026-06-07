@@ -14,6 +14,11 @@ interface PhotoAnswer {
   imports: [CommonModule, FormsModule],
   template: `
     <article class="step-card story-card">
+      @if (step().illustrationAsset) {
+        <div class="scene-cover">
+          <img [src]="step().illustrationAsset" [alt]="step().title" />
+        </div>
+      }
       <div class="step-card__body">
         <p class="eyebrow">Фото семьи</p>
         <h2>{{ step().title }}</h2>

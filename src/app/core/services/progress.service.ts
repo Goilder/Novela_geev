@@ -188,6 +188,20 @@ export class ProgressService {
       .filter(Boolean);
   }
 
+  getPhotoGalleryEntries(): Array<{ photoDataUrl: string; caption: string }> {
+    return Object.values(this.state().moduleProgress)
+      .flatMap((moduleState) => Object.values(moduleState.answers))
+      .filter(
+        (answer): answer is { photoDataUrl: string; caption?: string } =>
+          !!answer && typeof answer === 'object' && 'photoDataUrl' in answer,
+      )
+      .map((answer) => ({
+        photoDataUrl: answer.photoDataUrl,
+        caption: answer.caption?.trim() ?? '',
+      }))
+      .filter((entry) => !!entry.photoDataUrl);
+  }
+
   private persist(): void {
     if (typeof window === 'undefined') {
       return;

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, input, output } from '@angular/core';
-import { SafeResourceUrlPipe } from '../pipes/safe-resource-url.pipe';
 import { VideoStep } from '../../core/models/game-content.model';
+import { SafeResourceUrlPipe } from '../pipes/safe-resource-url.pipe';
 
 @Component({
   selector: 'app-video-card',

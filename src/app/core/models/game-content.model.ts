@@ -15,6 +15,12 @@ export interface GameMeta {
   awardsBackgroundAsset: string;
   finalBackgroundAsset: string;
   highlights: string[];
+  targetAudience: string[];
+  familyValues: string[];
+  educationalFoundation: EducationalFoundation;
+  guideProfile: GuideProfile;
+  outcomes: string[];
+  feedbackModel: FeedbackModel;
 }
 
 export interface PhraseCatalog {
@@ -36,6 +42,28 @@ export interface FinaleContent {
   certificateTitle: string;
   certificateLine: string;
   closingLines: string[];
+  requirements: string[];
+  issueScenario: string[];
+}
+
+export interface EducationalFoundation {
+  relevance: string;
+  pedagogicalBase: string[];
+  culturalContext: string;
+  familyLeisureGoal: string;
+}
+
+export interface GuideProfile {
+  name: string;
+  title: string;
+  mission: string;
+  traits: string[];
+}
+
+export interface FeedbackModel {
+  uploadDescription: string;
+  familyGalleryDescription: string;
+  certificateRequirement: string;
 }
 
 export interface GameModule {
@@ -48,6 +76,10 @@ export interface GameModule {
   coverAsset: string;
   accent: string;
   mapPosition?: MapPosition;
+  learningGoal?: string;
+  culturalFocus?: string;
+  familyValues?: string[];
+  conceptHighlights?: string[];
   reward: ModuleReward;
   completion: ModuleCompletion;
   steps: ModuleStep[];
@@ -83,6 +115,7 @@ export interface BaseStep {
     | 'photo';
   title: string;
   description?: string;
+  illustrationAsset?: string;
   continueLabel?: string;
 }
 
@@ -167,6 +200,7 @@ export interface CrosswordWord {
   row: number;
   col: number;
   direction: 'across' | 'down';
+  hintAsset?: string;
 }
 
 export interface PhotoStep extends BaseStep {

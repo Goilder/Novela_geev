@@ -51,6 +51,43 @@ import { ProgressService } from '../core/services/progress.service';
           </article>
         </section>
 
+        <section class="content-grid content-grid--awards">
+          <article class="story-card story-card--soft">
+            <p class="eyebrow">Обратная связь</p>
+            <h2>Как устроена семейная галерея</h2>
+            <div class="clue-list">
+              <div class="clue-item clue-item--static">
+                <span>{{ gameContent.meta.feedbackModel.uploadDescription }}</span>
+              </div>
+              <div class="clue-item clue-item--static">
+                <span>{{ gameContent.meta.feedbackModel.familyGalleryDescription }}</span>
+              </div>
+              <div class="clue-item clue-item--static">
+                <span>{{ gameContent.meta.feedbackModel.certificateRequirement }}</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="story-card story-card--soft">
+            <p class="eyebrow">Выставка семьи</p>
+            <h2>Сохраненные работы</h2>
+            @if (galleryEntries().length) {
+              <div class="photo-gallery">
+                @for (entry of galleryEntries(); track entry.photoDataUrl) {
+                  <figure class="gallery-card">
+                    <img [src]="entry.photoDataUrl" alt="Семейная работа" />
+                    @if (entry.caption) {
+                      <figcaption>{{ entry.caption }}</figcaption>
+                    }
+                  </figure>
+                }
+              </div>
+            } @else {
+              <p>Здесь появятся ваши рисунки, обереги и фото блюд после творческих модулей.</p>
+            }
+          </article>
+        </section>
+
         <div class="button-row">
           <a class="btn btn--ghost" routerLink="/map">Вернуться к карте</a>
           @if (allCompleted()) {
@@ -69,6 +106,9 @@ export class AwardsPageComponent {
   protected readonly modules = computed(() => this.contentService.modules());
   protected readonly allCompleted = computed(() =>
     this.progressService.areAllModulesCompleted(this.modules()),
+  );
+  protected readonly galleryEntries = computed(() =>
+    this.progressService.getPhotoGalleryEntries(),
   );
 
   hasBadge(badgeId: string): boolean {

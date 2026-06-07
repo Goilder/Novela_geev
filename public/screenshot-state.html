@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <title>Screenshot State Helper</title>
+  </head>
+  <body>
+    <script>
+      (function () {
+        const key = 'pampalche-progress-v1';
+        const params = new URLSearchParams(window.location.search);
+        const mode = params.get('mode') || 'empty';
+        const target = params.get('target') || '/menu';
+
+        const states = {
+          empty: {
+            startedAt: null,
+            updatedAt: null,
+            sparks: 0,
+            badges: [],
+            completedModuleIds: [],
+            familyProfile: { childName: '', parentName: '' },
+            moduleProgress: {},
+          },
+          final: {
+            startedAt: '2026-06-07T12:00:00.000Z',
+            updatedAt: '2026-06-07T12:30:00.000Z',
+            sparks: 100,
+            badges: ['story-seed', 'craft-heart', 'riddle-spark', 'kitchen-sun'],
+            completedModuleIds: ['literary', 'make-together', 'think-together', 'cook-together'],
+            familyProfile: { childName: 'Алина', parentName: 'Мама Лена' },
+            moduleProgress: {
+              literary: { currentStepIndex: 6, completed: true, completedAt: '2026-06-07T12:05:00.000Z', answers: {} },
+              'make-together': { currentStepIndex: 6, completed: true, completedAt: '2026-06-07T12:10:00.000Z', answers: {} },
+              'think-together': { currentStepIndex: 4, completed: true, completedAt: '2026-06-07T12:15:00.000Z', answers: {} },
+              'cook-together': { currentStepIndex: 5, completed: true, completedAt: '2026-06-07T12:20:00.000Z', answers: {} },
+            },
+          },
+        };
+
+        const state = states[mode] || states.empty;
+        localStorage.setItem(key, JSON.stringify(state));
+        window.location.replace(target);
+      })();
+    </script>
+  </body>
+  </html>

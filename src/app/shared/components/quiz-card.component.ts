@@ -7,6 +7,11 @@ import { ContentService } from '../../core/services/content.service';
   standalone: true,
   template: `
     <article class="step-card story-card">
+      @if (step().illustrationAsset) {
+        <div class="scene-cover">
+          <img [src]="step().illustrationAsset" [alt]="step().title" />
+        </div>
+      }
       <div class="step-card__body">
         <p class="eyebrow">Тест</p>
         <h2>{{ step().title }}</h2>
@@ -27,7 +32,11 @@ import { ContentService } from '../../core/services/content.service';
         </div>
 
         @if (selectedOptionId()) {
-          <div class="feedback-panel" [class.feedback-panel--good]="isCorrect()" [class.feedback-panel--soft]="!isCorrect()">
+          <div
+            class="feedback-panel"
+            [class.feedback-panel--good]="isCorrect()"
+            [class.feedback-panel--soft]="!isCorrect()"
+          >
             <strong>{{ isCorrect() ? 'Верно!' : 'Подумаем еще' }}</strong>
             <p>{{ isCorrect() ? step().feedback.correct : step().feedback.incorrect }}</p>
             @if (pampalcheLine()) {

@@ -24,6 +24,13 @@ import { ProgressService } from '../core/services/progress.service';
                 <div class="highlight-chip">{{ highlight }}</div>
               }
             </div>
+
+            <div class="button-row button-row--hero">
+              <button class="btn btn--primary" type="button" (click)="startJourney()">
+                {{ hasStarted() ? 'Продолжить путешествие' : 'Начать путешествие' }}
+              </button>
+              <a class="btn btn--ghost" routerLink="/map">Открыть карту модулей</a>
+            </div>
           </div>
 
           <div class="hero-panel__media">
@@ -50,7 +57,7 @@ import { ProgressService } from '../core/services/progress.service';
                 <span>Имя родителя</span>
                 <input
                   type="text"
-                  placeholder="Например: Мама Лена"
+                  placeholder="Например: мама Лена"
                   [ngModel]="parentName()"
                   (ngModelChange)="parentName.set($event)"
                 />
@@ -58,9 +65,6 @@ import { ProgressService } from '../core/services/progress.service';
             </div>
 
             <div class="button-row">
-              <button class="btn btn--primary" type="button" (click)="startJourney()">
-                {{ hasStarted() ? 'Продолжить путешествие' : 'Начать путешествие' }}
-              </button>
               <a class="btn btn--ghost" routerLink="/map">Открыть карту</a>
             </div>
           </article>
@@ -79,13 +83,72 @@ import { ProgressService } from '../core/services/progress.service';
               </div>
               <div class="stat-tile">
                 <strong>{{ progressService.state().badges.length }}</strong>
-                <span>бейджа получено</span>
+                <span>бейджей получено</span>
               </div>
             </div>
 
             <div class="button-row">
               <a class="btn btn--ghost" routerLink="/awards">Смотреть награды</a>
               <button class="btn btn--ghost" type="button" (click)="resetJourney()">Сбросить прогресс</button>
+            </div>
+          </article>
+        </section>
+
+        <section class="content-grid content-grid--home">
+          <article class="story-card story-card--soft">
+            <p class="eyebrow">Для кого</p>
+            <h2>Целевая аудитория</h2>
+            <div class="tip-list">
+              @for (item of gameContent.meta.targetAudience; track item) {
+                <div class="tip-pill">{{ item }}</div>
+              }
+            </div>
+
+            <p class="eyebrow">Ценности</p>
+            <h3>Что мы укрепляем</h3>
+            <div class="highlight-grid">
+              @for (value of gameContent.meta.familyValues; track value) {
+                <div class="highlight-chip">{{ value }}</div>
+              }
+            </div>
+          </article>
+
+          <article class="story-card story-card--soft">
+            <p class="eyebrow">Пампалче</p>
+            <h2>{{ gameContent.meta.guideProfile.name }} — {{ gameContent.meta.guideProfile.title }}</h2>
+            <p>{{ gameContent.meta.guideProfile.mission }}</p>
+
+            <div class="highlight-grid">
+              @for (trait of gameContent.meta.guideProfile.traits; track trait) {
+                <div class="highlight-chip">{{ trait }}</div>
+              }
+            </div>
+          </article>
+        </section>
+
+        <section class="content-grid content-grid--home">
+          <article class="story-card story-card--soft">
+            <p class="eyebrow">Основа</p>
+            <h2>Образовательная концепция</h2>
+            <p>{{ gameContent.meta.educationalFoundation.relevance }}</p>
+            <p>{{ gameContent.meta.educationalFoundation.culturalContext }}</p>
+
+            <div class="tip-list">
+              @for (item of gameContent.meta.educationalFoundation.pedagogicalBase; track item) {
+                <div class="tip-pill">{{ item }}</div>
+              }
+            </div>
+          </article>
+
+          <article class="story-card story-card--soft">
+            <p class="eyebrow">Результат</p>
+            <h2>Что семья получает после прохождения</h2>
+            <div class="clue-list">
+              @for (item of gameContent.meta.outcomes; track item) {
+                <div class="clue-item clue-item--static">
+                  <span>{{ item }}</span>
+                </div>
+              }
             </div>
           </article>
         </section>

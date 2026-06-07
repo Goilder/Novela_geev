@@ -20,6 +20,11 @@ interface GridCell {
   imports: [CommonModule],
   template: `
     <article class="step-card story-card">
+      @if (step().illustrationAsset) {
+        <div class="scene-cover">
+          <img [src]="step().illustrationAsset" [alt]="step().title" />
+        </div>
+      }
       <div class="step-card__body">
         <p class="eyebrow">Кроссворд</p>
         <h2>{{ step().title }}</h2>
@@ -33,7 +38,7 @@ interface GridCell {
         </div>
 
         <div class="crossword-layout">
-          <div class="crossword-grid">
+          <div class="crossword-grid" [style.--crossword-cols]="step().grid.cols">
             @for (row of gridRows(); track row.rowIndex) {
               <div class="crossword-grid__row">
                 @for (cell of row.cells; track cellKey(cell.row, cell.col)) {
@@ -65,6 +70,9 @@ interface GridCell {
                   [class.is-solved]="solvedWordIds().includes(word.id)"
                   (click)="activeWordId.set(word.id)"
                 >
+                  @if (word.hintAsset) {
+                    <img class="clue-item__thumb" [src]="word.hintAsset" [alt]="word.clue" />
+                  }
                   <strong>{{ word.direction === 'across' ? 'По горизонтали' : 'По вертикали' }}</strong>
                   <span>{{ word.clue }}</span>
                 </button>
@@ -144,9 +152,7 @@ export class CrosswordCardComponent {
   });
 
   readonly solvedCount = computed(() => this.solvedWordIds().length);
-  readonly allSolved = computed(
-    () => this.solvedWordIds().length === this.step().words.length,
-  );
+  readonly allSolved = computed(() => this.solvedWordIds().length === this.step().words.length);
 
   constructor() {
     effect(() => {
@@ -168,9 +174,7 @@ export class CrosswordCardComponent {
   }
 
   updateEntry(row: number, col: number, event: Event): void {
-    const value = (event.target as HTMLInputElement).value
-      .slice(-1)
-      .toLocaleUpperCase('ru-RU');
+    const value = (event.target as HTMLInputElement).value.slice(-1).toLocaleUpperCase('ru-RU');
 
     this.entries.update((entries) => ({
       ...entries,
@@ -199,9 +203,7 @@ export class CrosswordCardComponent {
       );
       this.fillCorrectWord(activeWord);
       this.statusMessage.set(`Слово «${activeWord.answer}» решено.`);
-      const nextWord = this.step().words.find(
-        (word) => !this.solvedWordIds().includes(word.id),
-      );
+      const nextWord = this.step().words.find((word) => !this.solvedWordIds().includes(word.id));
       if (nextWord) {
         this.activeWordId.set(nextWord.id);
       }

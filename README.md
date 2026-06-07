@@ -1,59 +1,43 @@
-# Novela
+# Пока все вместе
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.6.
+Интерактивное Angular-приложение в формате визуальной новеллы для семейного прохождения. Проект ориентирован на детей 6–10 лет и родителей и знакомит семью с ценностями совместного досуга и элементами культуры народа мари через 4 последовательных модуля.
 
-## Development server
+## Что есть в MVP
 
-To start a local development server, run:
+- 4 story-driven модуля с последовательным открытием;
+- персонаж-проводник Пампалче;
+- диалоги, выборы, тесты, кроссворд, творческие ответы и фото;
+- семейная галерея локально сохраненных работ;
+- награды, искры и финальный сертификат;
+- контент, вынесенный в JSON отдельно от логики.
 
-```bash
-ng serve
-```
+## Модули
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+1. Литературный
+   - сказка, буктрейлер, обсуждение поступков героини, рисунок семейных ценностей.
+2. Сделаем вместе
+   - мастер-класс по изготовлению куклы-оберега «Крупеничка».
+3. Подумаем вместе
+   - большой семейный кроссворд с подсказками и творческим вопросом.
+4. Приготовим вместе
+   - знакомство с блюдом «Пулашкамуно» и семейное приготовление.
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+## Запуск
 
 ```bash
-ng build
+npm install
+npm start -- --host 127.0.0.1 --port 4200
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+После запуска приложение будет доступно по адресу [http://127.0.0.1:4200](http://127.0.0.1:4200).
 
-## Running unit tests
+## Основные файлы
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+- [pampalche_game_content.json](G:\Project all\Novela-bl9t\pampalche_game_content.json) — сценарный и концептуальный контент приложения.
+- [PROJECT_STATUS.md](G:\Project all\Novela-bl9t\PROJECT_STATUS.md) — текущее состояние проекта.
+- [src/app](G:\Project all\Novela-bl9t\src\app) — исходный код приложения.
+- [src/styles.scss](G:\Project all\Novela-bl9t\src\styles.scss) — глобальные стили.
 
-```bash
-ng test
-```
+## Ограничения текущей версии
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Это MVP без backend и без внешней публикации работ. Прогресс и фотографии сохраняются локально в браузере.

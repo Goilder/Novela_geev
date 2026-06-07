@@ -1,4 +1,5 @@
 import { HttpClient } from '@angular/common/http';
+import { DOCUMENT } from '@angular/common';
 import { Injectable, computed, inject, signal } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { GameContent, GameModule, PhraseCatalog } from '../models/game-content.model';
@@ -6,6 +7,11 @@ import { GameContent, GameModule, PhraseCatalog } from '../models/game-content.m
 @Injectable({ providedIn: 'root' })
 export class ContentService {
   private readonly http = inject(HttpClient);
+  private readonly document = inject(DOCUMENT);
+  private readonly contentUrl = new URL(
+    'pampalche_game_content.json',
+    this.document.baseURI,
+  ).toString();
 
   readonly content = signal<GameContent | null>(null);
   readonly loading = signal(false);
@@ -22,7 +28,7 @@ export class ContentService {
 
     try {
       const payload = await firstValueFrom(
-        this.http.get<GameContent>('/pampalche_game_content.json'),
+        this.http.get<GameContent>(this.contentUrl),
       );
       this.content.set(payload);
       return payload;

@@ -1,16 +1,23 @@
-import { copyFileSync, existsSync, writeFileSync } from 'node:fs';
+import { copyFileSync, existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 const browserDir = resolve('dist', 'novela', 'browser');
 const indexFile = resolve(browserDir, 'index.html');
 const notFoundFile = resolve(browserDir, '404.html');
 const noJekyllFile = resolve(browserDir, '.nojekyll');
+const baseHref = '/Novela_geev/';
 
 if (!existsSync(indexFile)) {
   throw new Error(`Build output not found: ${indexFile}`);
 }
 
-copyFileSync(indexFile, notFoundFile);
+const updatedIndex = readFileSync(indexFile, 'utf8').replace(
+  /<base href="[^"]*"\s*\/?>/,
+  `<base href="${baseHref}">`,
+);
+
+writeFileSync(indexFile, updatedIndex, 'utf8');
+writeFileSync(notFoundFile, updatedIndex, 'utf8');
 writeFileSync(noJekyllFile, '');
 console.log(`Created GitHub Pages SPA fallback: ${notFoundFile}`);
 console.log(`Created GitHub Pages marker: ${noJekyllFile}`);
